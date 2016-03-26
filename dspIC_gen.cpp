@@ -14,17 +14,6 @@ using namespace std;
 
 const int Ndft = 128;
 
-// sin(x) = x - (1/3!)x^3 + (1/5!)x^5 - (1/7!)x^7 
-INT8S fsin(INT8U m)
-{
-    INT8U m3,m5,m7;
-    m3 = m*m*m
-    = 
-}
-
-// cos(x) = x - (1/3!)x^3 + (1/5!)x^5 - (1/7!)x^7 
-INT8S fcos
-
 int _tmain(int argc, _TCHAR* argv[])
 {
 	INT8U i,j,m,*pt,x;
@@ -63,8 +52,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		tm = *(tabletm+i);
 		tcos = fcos(tm);
 		tsin = fsin(tm);
-		*(pr+i)=tcos; // <<6 
-		*(pi+i)=tsin; // <<6
+		*(pr+i)=INT8S(tcos*64); // <<6 
+		*(pi+i)=INT8S(tsin*64); // <<6
 	}
 
 	/*
