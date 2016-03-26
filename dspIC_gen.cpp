@@ -52,8 +52,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		tm = *(tabletm+i);
 		tcos = cos(double(tm));
 		tsin = sin(double(tm));
-		*(pr+i)=(signed char)(tcos*16); // *16 
-		*(pi+i)=(signed char)(tsin*16); // *16
+		*(pr+i)=(signed char)(tcos*64); // <<6 
+		*(pi+i)=(signed char)(tsin*64); // <<6
 	}
 
 	/*
