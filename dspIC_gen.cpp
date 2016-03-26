@@ -1,4 +1,4 @@
-// dspIC_gen.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// dspIC_gen.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -16,9 +16,10 @@ const int Ndft = 128;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	unsigned char i,j,m,*pt,tm,x;
-	signed char *pr,*pi;
-	double tcos,tsin;
+	INT8U i,j,m,*pt,x;
+	INT16U tm;
+	INT8S *pr,*pi;
+	FP32 tcos,tsin;
 	FILE *fp;
 	fp = fopen("tableEx.h","w+");
 
