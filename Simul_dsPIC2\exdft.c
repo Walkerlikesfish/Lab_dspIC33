@@ -26,12 +26,12 @@ const INT8U Ndft = 128;
 void main(void)
 {
     INT8U i,j,m;
+    	INT8U first_sample,ind;
 	INT8S treal,timage;
-
-
-	INT16S *Xreal,*Ximage,txr,txi,sxr,sxi,*tr,*ti;
+	INT16S *Xreal,*Ximage,txr,txi,*tr,*ti;
+	INT32S sxr,sxi;
 	Xreal = (INT16S*)malloc(Ndft+1);
-    Ximage = (INT16S*)malloc(Ndft+1);
+	Ximage = (INT16S*)malloc(Ndft+1);
 	tr=Xreal;
 	ti=Ximage;
 
@@ -40,11 +40,12 @@ void main(void)
         sxr=0; sxi=0;
 		for(j=0;j<Ndft;j++)
 		{
-			m=i*j/Ndft;  // rounded by requirement [not fix point]
+			ind = (j+first_sample)%Ndft; // make it a circular index
+			m=i*ind/Ndft;  // rounded by requirement [not fix point]
 			treal = *(wreal+m); //read from table
 			timage = *(wimage+m); //read from table
-			txr = (INT16S)treal*(INT16S)xin[j]; //typecast before
-			txi = -(INT16S)timage*(INT16S)xin[j]; //typecast before
+			txr = (INT16S)treal*(INT16S)xin[ind]; //typecast before
+			txi = -(INT16S)timage*(INT16S)xin[ind]; //typecast before
 			sxr = sxr+txr; //[?] Do we need to deal with the overflow here
 			sxi = sxi+txi;
 		} 
