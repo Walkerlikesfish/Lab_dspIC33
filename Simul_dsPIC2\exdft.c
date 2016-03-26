@@ -48,7 +48,7 @@ void main(void)
 			sxr = sxr+txr; //[?] Do we need to deal with the overflow here
 			sxi = sxi+txi;
 		} 
-		*(tr+i)=sxr;
-		*(ti+i)=sxi;
+		*(tr+i)=(sxr+16384)>>6;
+		*(ti+i)=(sxi+16384)>>6;
 	}
 }
