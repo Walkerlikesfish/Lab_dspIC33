@@ -14,6 +14,17 @@ using namespace std;
 
 const int Ndft = 128;
 
+// sin(x) = x - (1/3!)x^3 + (1/5!)x^5 - (1/7!)x^7 
+INT8S fsin(INT8U m)
+{
+    INT8U m3,m5,m7;
+    m3 = m*m*m
+    = 
+}
+
+// cos(x) = x - (1/3!)x^3 + (1/5!)x^5 - (1/7!)x^7 
+INT8S fcos
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	INT8U i,j,m,*pt,x;
@@ -26,11 +37,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	srand(time(NULL));
 	
 
-	signed char *treal = new signed char[Ndft+1]; // real part of coefficient
-	signed char *timage = new signed char[Ndft+1]; // image part of coef
-	unsigned char *tablem = new unsigned char[Ndft*Ndft]; // intermediate to store n*k/Ndft
-	unsigned char *tabletm = new unsigned char[Ndft+1];  // +1 play a little trick in printing the table
-	unsigned char *xin = new unsigned char[Ndft+1];
+	INT8S *treal = new INT8S[Ndft+1]; // real part of coefficient
+	INT8S *timage = new INT8S[Ndft+1]; // image part of coef
+	INT8U *tablem = new INT8U[Ndft*Ndft]; // intermediate to store n*k/Ndft
+	INT8U *tabletm = new INT8U[Ndft+1];  // +1 play a little trick in printing the table
+	INT8U *xin = new INT8U[Ndft+1];
 
 	pt = tablem;
 	for(i=1;i<=Ndft;i++)
@@ -50,10 +61,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	for(i=0;i<Ndft;i++)
 	{
 		tm = *(tabletm+i);
-		tcos = cos(double(tm));
-		tsin = sin(double(tm));
-		*(pr+i)=(signed char)(tcos*64); // <<6 
-		*(pi+i)=(signed char)(tsin*64); // <<6
+		tcos = fcos(tm);
+		tsin = fsin(tm);
+		*(pr+i)=tcos; // <<6 
+		*(pi+i)=tsin; // <<6
 	}
 
 	/*
